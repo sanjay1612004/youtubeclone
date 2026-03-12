@@ -6,12 +6,43 @@ import { useEffect, useState } from "react";
 import { searchapi } from "../utils/contants";
 import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
+import { FaMicrophoneSlash } from "react-icons/fa";
+import { GrMicrophone } from "react-icons/gr";
+
 
 
 function Head({show,menu}) {
   const[inp,setinp]=useState('')
   const[suggestions,setsuggestions]=useState([])
   const[showsuggestion,setshowsuggestion]=useState(false)
+  const [text,setText]=useState("")
+ const [listening,setListening]=useState(false)
+
+
+  const [recognition,setRecognition]=useState(null)
+
+useEffect(()=>{
+
+ const recog=new (window.SpeechRecognition || window.webkitSpeechRecognition)()
+
+ recog.continuous=true
+
+ recog.onresult=(e)=>{
+  const voice=e.results[e.results.length-1][0].transcript
+  setinp(prev=>prev+" "+voice)
+ }
+
+ setRecognition(recog)
+
+ return ()=>recog.stop()
+
+},[])
+
+
+
+
+
+
   useEffect(()=>{
     const timer=setTimeout(()=>getsuggestion(),200)
     return ()=>{
@@ -24,6 +55,25 @@ function Head({show,menu}) {
     setsuggestions(json[1])
     console.log(suggestions)
   }
+
+
+//   useEffect(()=>{
+
+//  const recog=new (window.SpeechRecognition || window.webkitSpeechRecognition)()
+
+//  recog.continuous=true
+
+//  recog.onresult=(e)=>{
+//   const voice=e.results[e.results.length-1][0].transcript
+//   setinp(prev=>prev+" "+voice)
+//  }
+
+//  setRecognition(recog)
+
+//  return ()=>recog.stop()
+
+// },[listening])
+  
     
   return (
     <div className="sticky top-0 grid grid-flow-col p-2   items-center bg-white z-50">
@@ -71,7 +121,15 @@ function Head({show,menu}) {
             )}
           </div>
         </div>
-        <FaMicrophone className="text-xl mt-2 mx-3"/>
+        <span onClick={()=>{
+          if(!listening){
+            recognition.start()
+            setListening(true)
+          }else{
+            recognition.stop()
+            setListening(false)
+          }
+          }}>{listening?<FaMicrophone className="text-xl mt-2 mx-3" />:<GrMicrophone className="text-xl mt-2 mx-3"/>}</span>
 
       </div>
 

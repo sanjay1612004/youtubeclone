@@ -45,7 +45,7 @@ function Related({ videoId }) {
       {/* <h1 className="text-2xl font-bold text-center">Related video</h1> */}
       
         {items?.map((item) => (
-        <a href={'/watch?v='+item.id}>
+        <Link to={'/watch?v='+item.id}>
         <div
             key={item.id}
             className="flex gap-3 p-2 mb-3 rounded-lg hover:bg-gray-100 cursor-pointer transition"
@@ -76,7 +76,7 @@ function Related({ videoId }) {
       <span className="text-lg">⋮</span>
     </div>
   </div>
-  </a>
+  </Link>
 ))}
      
     </div>

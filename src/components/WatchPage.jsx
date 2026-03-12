@@ -15,6 +15,7 @@ function WatchPage(){
     const[like,setlike]=useState(0)
     const videoId=searchParams.get('v')
     const[videotitle,setvideotitle]=useState('')
+    const [subscribed, setSubscribed] = useState(false)
 
     useEffect(() => {
     window.scrollTo({
@@ -79,17 +80,18 @@ function WatchPage(){
                         </p>
                         </div>
 
-                        <button className="ml-4 bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded-full transition">
-                        Subscribe
+                        <button className="ml-4 bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded-full transition"   onClick={() => setSubscribed(!subscribed)}>
+                              {subscribed ? "Subscribed" : "Subscribe"}
+
                         </button>
                     </div>
 
                     <div className="flex items-center gap-3">
 
                         <button className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full transition">
-                        <AiOutlineLike className="text-lg" />
+                        <AiOutlineLike className="text-lg" onClick={()=>setlike(Number(like)+1)}/>
                         <span className="text-sm font-medium">
-                            {convert(like)}
+                            {like}
                         </span>
                         </button>
 
