@@ -28,7 +28,7 @@ function App(){
 }])
   return (
     <>
-      <Head show={show} menu={menu}/>
+      {/* <Head show={show} menu={menu}/> */}
       {/* <Body show={show} menu={menu}/> */}
       <RouterProvider router={appRouter}/>
     </>

@@ -7,17 +7,17 @@ import { convert, timeAgo } from "../utils/contants";
 
 function Comments({videoid}){
     const[comments,setcomments]=useState([])
+    const [showAll,setShowAll]=useState(false)
+
     useEffect(()=>{
         getComments()
     },[])
     async function getComments(params) {
         const data=await fetch(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${videoid}&key=AIzaSyCz_YBQwlM-W4Iyxr9n9Iedfjjh3o7r4qQ`)
         const json=await data.json()
-        // console.log(json.items[0].snippet.topLevelComment.snippet)
         setcomments(json.items)
     }
-    // const {authorDisplayName,authorProfileImageUrl,likeCount,textOriginal,textDisplay}=comments
-    // console.log(authorDisplayName)
+
      if (!comments?.length){
       return <div>
             <h1 className="text-2xl font-semibold">Comments</h1>
@@ -28,7 +28,14 @@ function Comments({videoid}){
 
     return (
      
-  <div className="max-w-225 w-full ">
+  // <div className="max-w-225 w-full ">
+  <div>
+      <div className={`
+    transition-all duration-300
+    ${showAll ? "" : "max-h-65 overflow-hidden"}
+    sm:max-h-full
+    `}>
+
     <h1 className="text-2xl font-semibold">Comments {comments.length}</h1>
     {/* {console.log(comments)} */}
     
@@ -37,7 +44,6 @@ function Comments({videoid}){
       return (
         <div className="flex justify-between">
 
-          {/* LEFT SIDE */}
           <div>
 
             <div className="flex mt-2 pt-2">
@@ -77,14 +83,30 @@ function Comments({videoid}){
 
           </div>
 
-          {/* RIGHT SIDE ⋮ */}
           <div>
             <span>⋮</span>
           </div>
 
         </div>
+
       );
     })}
+    
+    
+
+  </div>
+  {comments.length>2 &&(
+
+      <button
+      onClick={()=>setShowAll(!showAll)}
+      className="text-blue-600 mt-3 sm:hidden"
+      >
+
+      {showAll ? "Show less" : "... Show more"}
+
+      </button>
+
+      )}
   </div>
 );
 }
