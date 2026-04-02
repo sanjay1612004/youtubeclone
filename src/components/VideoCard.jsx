@@ -11,11 +11,11 @@ function VideoCard({ info,menu }) {
   console.log(info)
 
   return (
-    <div className={`p-3 m-2 ${menu ? "w-72":"w-68"} cursor-pointer  rounded-lg`}>
+    <div className={`p-3 m-2 w-full ${menu ? "sm:w-72":"sm:w-68"} cursor-pointer  rounded-lg`}>
       <img
         src={thumbnails?.high?.url}
         alt="thumbnail"
-        className="rounded-xl h-40 w-full object-cover"
+        className="w-full aspect-video object-cover rounded-lg"
       />
 
       <div className="mt-3">
