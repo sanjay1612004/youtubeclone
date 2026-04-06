@@ -19,8 +19,8 @@ function VideoCard({ info,menu }) {
       />
 
       <div className="mt-3">
-        <div className="flex justify-between font-bold">
-            <h2 className="font-semibold text-sm line-clamp-2">
+        <div className="flex justify-between font-bold ">
+            <h2 className="font-medium text-sm line-clamp-2 dark:text-[#E5E5E5]">
             {title}
             </h2>
             <span className="font-bold">⋮</span>

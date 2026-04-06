@@ -131,10 +131,10 @@ onClick={()=>setSubscribed(!subscribed)}
 
 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
 
-<button className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-3 sm:px-5 py-2 rounded-full">
+<button className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-3 sm:px-5 py-2 rounded-full dark:bg-[#262626]">
 
 <AiOutlineLike
-className="text-lg cursor-pointer"
+className="text-lg cursor-pointer dark:bg-[#262626]"
 onClick={()=>setlike(prev=>prev+1)}
 />
 
@@ -144,13 +144,13 @@ onClick={()=>setlike(prev=>prev+1)}
 
 </button>
 
-<button className="flex items-center bg-gray-100 hover:bg-gray-200 p-2 rounded-full">
+<button className="flex items-center bg-gray-100 hover:bg-gray-200 p-2 rounded-full dark:bg-[#262626]">
 
 <AiOutlineDislike className="text-lg"/>
 
 </button>
 
-<button className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-full">
+<button className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-full dark:bg-[#262626]">
 
 <RiShareForwardLine/>
 
@@ -160,7 +160,7 @@ Share
 
 </button>
 
-<button className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-full">
+<button className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-full dark:bg-[#262626]">
 
 <CiBookmark/>
 

@@ -20,15 +20,15 @@ function SideBar2(){
  return (
     <div className="px-2  h-[90vh] py-2 col-span-1 sticky top-16">
         <div className="border-b border-[#ccc] px-3">
-            <div className="flex pb-2">
+            <div className="flex pb-2 dark:text-[#E5E5E5]">
                 <IoMdHome className="text-3xl "/>
                 <h1 className="text-md mt-1 ml-5  ">Home</h1>
             </div>
-            <div className="flex mt-2">
+            <div className="flex mt-2 dark:text-[#E5E5E5]">
                 <SiYoutubeshorts className="text-2xl" />
                 <h1 className="text-md mt-1 ml-5 ">Shorts</h1>
             </div>
-            <div className="flex mt-2">
+            <div className="flex mt-2 dark:text-[#E5E5E5]">
                 <MdOutlineSubscriptions className="text-2xl" />
                 <h1 className="text-md mt-1 ml-5 ">Subscriptions</h1>
             </div>

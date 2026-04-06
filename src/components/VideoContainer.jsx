@@ -15,7 +15,7 @@ function VideoContainer({menu}){
         setvideos(json.items)
     }
     return(
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-center pr-3">
         
         {videos.map((item,ind)=>{
             return <Link to={'/watch?v='+item.id}><VideoCard info={videos[ind]} menu={menu}/></Link>

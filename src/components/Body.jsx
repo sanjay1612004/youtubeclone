@@ -13,8 +13,8 @@ function Body({show,menu}){
     const iswatch=location.pathname==="/watch"
    
     return (
-        <div>
-                  <Head show={show} menu={menu}/>
+        <div className="bg-white text-black dark:bg-[#171717] dark:text-white">
+        <Head show={show} menu={menu}/>
 
         <div className="grid grid-flow-col ">
         <div className="hidden md:block lg:block">

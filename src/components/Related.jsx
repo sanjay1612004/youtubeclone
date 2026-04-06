@@ -48,7 +48,7 @@ function Related({ videoId }) {
         <a href={'/watch?v='+item.id}>
         <div
             key={item.id}
-            className="flex gap-3 p-2 mb-3 rounded-lg hover:bg-gray-100 cursor-pointer transition"
+            className="flex gap-3 p-2 mb-3 rounded-lg hover:bg-gray-100 cursor-pointer transition dark:hover:bg-[#262626]"
         >
     <img
       src={item?.snippet?.thumbnails?.medium?.url}
