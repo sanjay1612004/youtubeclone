@@ -88,73 +88,6 @@ localStorage.setItem("theme", dark ? "dark":"light")
   }
 
 
-  // return (
-  //   <div className="sticky top-0 grid grid-flow-col p-2   items-center bg-white z-50">
-
-  //     <div className="flex gap-3 col-span-1 items-center">
-  //       <GiHamburgerMenu className="text-2xl cursor-pointer mx-3 hidden md:block lg:block" onClick={()=>show()}/>
-  //       <a href="/">
-  //       <img
-  //         src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/1280px-Logo_of_YouTube_%282015-2017%29.svg.png"
-  //         alt="logo"
-  //         width={90}
-  //       />
-  //       </a>
-  //     </div>
-
-  //     <div className="col-span-10 flex justify-center">
-  //       <div className="relative w-1/2">
-  //         <div className="flex">
-  //           <input
-  //             type="text"
-  //             placeholder="Search"
-  //             className="w-full px-4 py-2 border border-gray-300 rounded-l-full outline-none"
-  //             onChange={(e)=>setinp(e.target.value)}
-  //             value={inp}
-  //             onFocus={()=>setshowsuggestion(true)}
-  //             onBlur={()=>setshowsuggestion(false)}
-  //           />
-
-  //           <button className="px-5 border border-l-0 border-gray-300 bg-gray-100 rounded-r-full hover:bg-gray-200">
-  //             <FaSearch className="text-lg" />
-  //           </button>
-  //         </div>
-  //         <div>
-  //           {suggestions.length>0 && showsuggestion &&(
-  //           <ul className="absolute bg-white w-115 px-2 py-2 z-50 border border-gray-200 rounded-md shadow-md">
-  //             {suggestions.map((item,index)=>{return <li className="py-1 cursor-pointer" key={index} onMouseDown={()=>{setinp(item); setsuggestions([])}}>
-  //               <div className="flex">
-  //               <CiSearch className="text-xl mt-1 mr-2" /> 
-  //               {item}
-  //               </div>
-  //               </li>})
-  //             }
-
-  //           </ul>
-  //           )}
-  //         </div>
-  //       </div>
-  //       <span onClick={()=>{
-  //         if(!listening){
-  //           recognition.start()
-  //           setListening(true)
-  //         }else{
-  //           recognition.stop()
-  //           setListening(false)
-  //         }
-  //         }}>{listening?<FaMicrophone className="text-xl mt-2 mx-3" />:<GrMicrophone className="text-xl mt-2 mx-3"/>}</span>
-
-  //     </div>
-
-  //     <div className="col-span-1 flex justify-end">
-  //       <HiUserCircle className="text-4xl cursor-pointer" />
-  //     </div>
-
-
-  //   </div>
-  // );
-
-
 
   return (
     <div className="sticky top-0 grid grid-cols-12 p-2 items-center bg-white z-50 dark:bg-[#171717]">
@@ -195,7 +128,11 @@ localStorage.setItem("theme", dark ? "dark":"light")
               onChange={(e) => setinp(e.target.value)}
               value={inp}
               onFocus={() => setshowsuggestion(true)}
-              onBlur={() => setshowsuggestion(false)}
+              // onBlur={() => setshowsuggestion(false)}
+              onBlur={()=>{
+              setTimeout(()=>setshowsuggestion(false),50)
+              }}
+
             />
 
             <button className="px-3 sm:px-5 border border-l-0 border-gray-300 bg-gray-100 rounded-r-full hover:bg-gray-200 dark:bg-[#262626] dark:hover:bg-[#373737] dark:border-[#373737]">
@@ -269,11 +206,9 @@ localStorage.setItem("theme", dark ? "dark":"light")
 
       </div>
 
-      {/* Right */}
       <div className="col-span-2 sm:col-span-2 md:col-span-2 flex justify-end items-center">
 
-        {/* Mobile search icon */}
-        {/* <FaSearch className="text-xl mr-3 sm:hidden"/> */}
+      
 
         {!profile ? <HiUserCircle className="text-3xl sm:text-4xl cursor-pointer dark:bg-[#171717] dark:text-[#F5F5F5]" onClick={()=>setshowpop(!showpop)}/> : <img src={profile} className="w-7 h-7 md:w-10 lg:w-10 md:h-10 lg:h-10 rounded-3xl" onClick={()=>setshowpop(!showpop)}/>}
         {!user && <Login/>}
